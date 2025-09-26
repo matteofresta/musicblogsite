@@ -1,10 +1,8 @@
-/* Container con effetto nebbioso sui lati */
 .carousel-container {
     position: relative;
     overflow: hidden;
 }
 
-/* Effetti nebbiosi sui lati - PIÙ VISIBILI */
 .carousel-fog-left {
     position: absolute;
     top: 0;
@@ -27,26 +25,22 @@
     pointer-events: none;
 }
 
-/* Stile base di OGNI slide - SENZA EFFETTI */
 .carousel-slide {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
     flex-shrink: 0;
     cursor: pointer;
-    /* RIMOSSI transform e opacity - slide sempre normali */
 }
 
-/* Immagine del carousel - PIÙ PICCOLA */
 .carousel-img {
-    width: 24rem; /* Ridotta da 50rem a 24rem */
-    height: 16rem; /* Ridotta da 20rem a 16rem */
+    width: 24rem;
+    height: 16rem;
     object-fit: cover;
     display: block;
     transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* Effetto hover: blur dell'immagine */
 .carousel-slide:hover .carousel-img {
     filter: blur(4px) brightness(0.7);
     transform: scale(1.05);

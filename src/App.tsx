@@ -1,4 +1,4 @@
-import { Home } from "@/pages/home.tsx";
+import { Home } from "@/pages/Home.tsx";
 import { Routes, Route } from "react-router";
 
 export default function App() {
