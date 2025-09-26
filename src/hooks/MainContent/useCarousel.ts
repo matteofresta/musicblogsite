@@ -5,7 +5,7 @@ export const useCarousel = (data: CarouselItem[], itemsToClone = 2) => {
     const [currentIndex, setCurrentIndex] = useState(itemsToClone);
     const [transitionEnabled, setTransitionEnabled] = useState(true);
 
-    // Creiamo l'array infinito con i cloni
+    // l'array infinito con i cloni
     const items = useMemo(() => {
         if (data.length === 0) return [];
         const startClones = data.slice(-itemsToClone);
