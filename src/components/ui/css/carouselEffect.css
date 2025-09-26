@@ -1,0 +1,72 @@
+/* Container con effetto nebbioso sui lati */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effetti nebbiosi sui lati - PIÙ VISIBILI */
+.carousel-fog-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7), transparent);
+    z-index: 30;
+    pointer-events: none;
+}
+
+.carousel-fog-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7), transparent);
+    z-index: 30;
+    pointer-events: none;
+}
+
+/* Stile base di OGNI slide - SENZA EFFETTI */
+.carousel-slide {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+    /* RIMOSSI transform e opacity - slide sempre normali */
+}
+
+/* Immagine del carousel - PIÙ PICCOLA */
+.carousel-img {
+    width: 24rem; /* Ridotta da 50rem a 24rem */
+    height: 16rem; /* Ridotta da 20rem a 16rem */
+    object-fit: cover;
+    display: block;
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* Effetto hover: blur dell'immagine */
+.carousel-slide:hover .carousel-img {
+    filter: blur(4px) brightness(0.7);
+    transform: scale(1.05);
+}
+
+.carousel-artist-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 24px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+/* Mostra il nome solo al hover */
+.carousel-slide:hover .carousel-artist-name {
+    opacity: 1;
+}
