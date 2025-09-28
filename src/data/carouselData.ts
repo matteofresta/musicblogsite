@@ -10,7 +10,7 @@ export const artistName = {
   ChildishGambino: "Childish Gambino",
   M83: "M83",
   SmallForward: "Small Forward",
-  UnknownArtist: "Unknown Artist"
+  UnknownArtist: "Drab Majesty"
 };
 
 export const carouselData: CarouselItem[] = [
@@ -40,8 +40,8 @@ export const carouselData: CarouselItem[] = [
   },
   {
     src: "https://goout.net/cdn-cgi/image/format=auto,width=383/i/134/1340647-383.jpg",
-    alt: "Artist 5",
+    alt: "Drab Majesty",
     artist: artistName.UnknownArtist,
-    link: "/artist/unknown"
+    link: "/artist/Drab Majesty"
   },
 ];
