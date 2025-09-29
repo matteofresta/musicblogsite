@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { type cardItem } from "@/data/cardData.ts";
 import ReactPlayer from 'react-player';
 import { VscUnmute, VscMute } from "react-icons/vsc";
+import { FaPlay } from "react-icons/fa";
+import '@/index.css'
 
 type SongCardProps = {
     item: cardItem;
@@ -21,7 +23,6 @@ export const SongCard = ({ item }: SongCardProps) => {
     } = useSongListRecommended();
 
     const { volume, handleVolumeToggle } = useVolumeFunctions();
-
 
     const handleIconClick = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -45,9 +46,12 @@ export const SongCard = ({ item }: SongCardProps) => {
                 {isHovered && (
                     <>
                         <ReactPlayer
-                            src={item.videoSong}
+                            src={item.song}
                             autoPlay={isPlayingSong}
                             playsInline
+                            onStart={true}
+                            onEnded={false}
+                            muted={false}
                             width="100%"
                             height="100%"
                             controls={false}
@@ -65,11 +69,25 @@ export const SongCard = ({ item }: SongCardProps) => {
                                 onClick={handleIconClick}
                             />
                         )}
+                        <img
+                            src={item.songImg}
+                            alt={item.alt}
+                            className={`object-cover absolute top-0 left-0 w-full h-full rounded-xl transition-opacity duration-300 
+                            ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+                        />
+                        <span className={`absolute top-2 left-2 text-white loading loading-spinner loading-md
+                            ${isPlayingSong ? 0} `}
+                            ></span>
                     </>
                 )}
 
-                <span className={`absolute z-50 top-[40%] left-[25%] bg-gray-300/20 backdrop-blur-lg rounded-xl p-4 text-bold text-white text-2xl ${isHovered ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300}`}>
+                <span className={`absolute z-50 bottom-2 left-2 bg-gray-300/20 backdrop-blur-lg rounded-xl p-4 text-bold text-white text-md ${isHovered ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300}`}>
                     {item.songTitle}
+                </span>
+                <span
+                    className={`pulse absolute flex flex-col bg-gray-300/20 backdrop-blur-lg rounded-xl p-4 justify-center items-center z-50 top-[40%] left-[15%] text-white text-xl 
+                    ${isHovered ? "hidden" : "block"}`}>
+                    Hover to preview song! <FaPlay className="text-white text-3xl" />
                 </span>
             </Card>
         </Link>
