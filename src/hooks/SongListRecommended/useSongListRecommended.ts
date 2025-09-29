@@ -1,5 +1,12 @@
 import {useCallback, useState} from "react";
 
+type ProgressData = {
+    playedSeconds: number;
+    played: number;
+    loaded: number;
+    loadedSeconds: number;
+};
+
 export const useSongListRecommended = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [isPlayingSong, setIsPlayingSong] = useState(false);
@@ -25,11 +32,17 @@ export const useSongListRecommended = () => {
         setIsMusicTitleVisible(false);
     }, []);
 
+    const handleProgress = useCallback((data: ProgressData) => {
+        setSongPlayTime(data.playedSeconds);
+    }, [setSongPlayTime]);
+
+
     return {
         isMusiTitleVisible,
         songPlayTime,
         isPlayingSong,
         isHovered,
+        handleProgress,
         handleMouseEnter,
         handleMouseLeave
     };
