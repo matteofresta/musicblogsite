@@ -48,9 +48,11 @@ export const Navbar = () => {
 
             {/* Buttons */}
             <div className="flex gap-4 flex-shrink-0">
-                <Button className="bg-gray-100 text-black hover:text-gray-200 hover:bg-black cursor-pointer shadow-md border border-gray-300/50 transition-all duration-300">
-                    Login
-                </Button>
+                <Link to="/login">
+                    <Button className="bg-gray-100 text-black hover:text-gray-200 hover:bg-black cursor-pointer shadow-md border border-gray-300/50 transition-all duration-300">
+                        Login
+                    </Button>
+                </Link>
                 <Button className="bg-black text-white hover:bg-gray-200 hover:text-black cursor-pointer shadow-md transition-all duration-300">
                     Register
                 </Button>

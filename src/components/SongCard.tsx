@@ -8,6 +8,7 @@ import { type cardItem } from "@/data/cardData.ts";
 import ReactPlayer from 'react-player';
 import { VscUnmute, VscMute } from "react-icons/vsc";
 import { FaSpotify } from "react-icons/fa";
+import { IoIosClose } from "react-icons/io";
 import { SiYoutubemusic } from "react-icons/si";
 import { CiMenuKebab } from "react-icons/ci";
 import { FaPlay } from "react-icons/fa";
@@ -38,6 +39,17 @@ export const SongCard = ({ item }: SongCardProps) => {
         e.preventDefault();
         e.stopPropagation();
         handleVolumeToggle();
+    };
+
+    const handleMenuToggle = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (isOpen) {
+            handleCloseMenu();
+        } else {
+            handleOpenMenu();
+        }
     };
 
 
@@ -88,15 +100,20 @@ export const SongCard = ({ item }: SongCardProps) => {
                             </span>
                         <div className={`absolute top-2 right-2 flex z-50 bg-gray-200/50 backdrop-blur-lg p-1 rounded-2xl`}>
                             <CiMenuKebab
-                                onClick={isOpen ? handleCloseMenu : handleOpenMenu}
+                                onClick={handleMenuToggle}
                                 className={`absolute top-2 right-2 bg-gray-200/50 text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50 ${isOpen ? 'hidden' : 'block'}`}
                             />
                             <ul>
-                                <li className={`absolute top-2 right-2 flex z-99 bg-gray-200/50 backdrop-blur-lg p-1 rounded-2xl ${isOpen ? 'block' : 'hidden'}`}
-                                    onClick={isOpen? handleOpenMenu : handleCloseMenu}>
+                                <li className={`absolute top-1 right-2 flex z-99 bg-gray-200/50 backdrop-blur-lg p-1 rounded-2xl ${isOpen ? 'block' : 'hidden'}`}
+                                >
                                     <a href=""><FaSpotify className="text-white text-3xl mr-1 hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50" /></a>
                                     <a href=""><SiYoutubemusic className="text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50" /></a>
                                     <a href=""></a>
+                                    <button>
+                                        <IoIosClose
+                                        onClick={handleMenuToggle}
+                                        className={`text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50 cursor-pointer`}
+                                        /></button>
                                 </li>
                             </ul>
                         </div>
