@@ -28,8 +28,7 @@ test ('Home page Header', async ({ page }) => {
     const headerTitle = page.getByRole('heading', { name: 'Welcome To the Music World' });
     await expect(headerTitle).toBeVisible();
 
-    const headerSubtitle = page.locator('span');
-    await expect(headerSubtitle).toHaveText('Expand your Music Horizon and taste new songs!');
+    await expect(page.getByText("Expand your Music Horizon and taste new songs!\n")).toBeVisible()
 
     const headerVisualisation = page.locator('.equalizer-container-inline')
     await expect(headerVisualisation).toBeVisible();

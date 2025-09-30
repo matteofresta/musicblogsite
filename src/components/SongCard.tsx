@@ -2,10 +2,14 @@ import React from "react";
 import { Card } from "@/components/ui/card.tsx";
 import { useSongListRecommended } from "@/hooks/SongListRecommended/useSongListRecommended.ts";
 import { useVolumeFunctions } from "@/hooks/SongListRecommended/useVolumeFunctions";
+import {useMenuOpen} from "@/hooks/SongListRecommended/useMenuOpen.ts";
 import { Link } from "react-router-dom";
 import { type cardItem } from "@/data/cardData.ts";
 import ReactPlayer from 'react-player';
 import { VscUnmute, VscMute } from "react-icons/vsc";
+import { FaSpotify } from "react-icons/fa";
+import { SiYoutubemusic } from "react-icons/si";
+import { CiMenuKebab } from "react-icons/ci";
 import { FaPlay } from "react-icons/fa";
 import '@/index.css'
 
@@ -14,6 +18,12 @@ type SongCardProps = {
 };
 
 export const SongCard = ({ item }: SongCardProps) => {
+
+    const {
+        isOpen,
+        handleCloseMenu,
+        handleOpenMenu,
+    } = useMenuOpen()
 
     const {
         isHovered,
@@ -49,8 +59,6 @@ export const SongCard = ({ item }: SongCardProps) => {
                             src={item.song}
                             autoPlay={isPlayingSong}
                             playsInline
-                            onStart={true}
-                            onEnded={false}
                             muted={false}
                             width="100%"
                             height="100%"
@@ -76,8 +84,22 @@ export const SongCard = ({ item }: SongCardProps) => {
                             ${isHovered ? 'opacity-100' : 'opacity-0'}`}
                         />
                         <span className={`absolute top-2 left-2 text-white loading loading-spinner loading-md
-                            ${isPlayingSong ? 0} `}
-                            ></span>
+                            ${isHovered ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
+                            </span>
+                        <div className={`absolute top-2 right-2 flex z-50 bg-gray-200/50 backdrop-blur-lg p-1 rounded-2xl`}>
+                            <CiMenuKebab
+                                onClick={isOpen ? handleCloseMenu : handleOpenMenu}
+                                className={`absolute top-2 right-2 bg-gray-200/50 text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50 ${isOpen ? 'hidden' : 'block'}`}
+                            />
+                            <ul>
+                                <li className={`absolute top-2 right-2 flex z-99 bg-gray-200/50 backdrop-blur-lg p-1 rounded-2xl ${isOpen ? 'block' : 'hidden'}`}
+                                    onClick={isOpen? handleOpenMenu : handleCloseMenu}>
+                                    <a href=""><FaSpotify className="text-white text-3xl mr-1 hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50" /></a>
+                                    <a href=""><SiYoutubemusic className="text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50" /></a>
+                                    <a href=""></a>
+                                </li>
+                            </ul>
+                        </div>
                     </>
                 )}
 
