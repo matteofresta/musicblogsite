@@ -1,4 +1,6 @@
 import { usePasswordCheck } from "@/hooks/LoginPage/usePasswordCheck.ts";
+import {motion} from "motion/react";
+import { Input, Button } from '@/components/ui'
 import { PiEyeClosedBold } from "react-icons/pi";
 import { FaEye } from "react-icons/fa";
 import {Navbar} from "@/components/Navbar.tsx";
@@ -10,18 +12,21 @@ export const LoginPage = () => {
     return (
         <div>
             <Navbar/>
-            <div className={"w-full h-screen flex items-center justify-center"}>
+            <motion.div
+                initial={{ opacity: 0, filter: "blur(10px)"}}
+                animate={{ opacity: 1, filter: "none", y: 10 }}
+                className={"w-full h-screen flex items-center justify-center"}>
                 <fieldset className="fieldset bg-white border-none shadow-2xl flex flex-col items-start justify-center rounded-2xl h-[20rem] w-xs border p-4">
                     <legend className="fieldset-legend text-black">Login</legend>
 
                     <label className="label flex">Email</label>
-                    <input type="email" className="input bg-gray-300" placeholder="Email" />
+                    <Input type="email" className="bg-gray-300 w-full h-10 pr-10" placeholder="Email" />
 
                     <label className="label">Password</label>
                     <div className="relative w-full flex items-center">
-                        <input
+                        <Input
                             type={isVisible ? "text" : "password"}
-                            className="input bg-gray-300 w-full pr-10"
+                            className="bg-gray-300 w-full h-10 pr-10"
                             placeholder="Password"
                         />
                         <button
@@ -36,10 +41,11 @@ export const LoginPage = () => {
                             )}
                         </button>
                     </div>
-
-                    <button className="btn btn-neutral mt-4 w-full">Login</button>
+                    <motion.div whileHover={{ scale: 1.05 }} className={"w-full"}>
+                        <Button className="btn btn-neutral mt-4 w-full">Login</Button>
+                    </motion.div>
                 </fieldset>
-            </div>
+            </motion.div>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "@/components/ui/card.tsx";
+import { Card } from "@/components/ui";
 import { useSongListRecommended } from "@/hooks/SongListRecommended/useSongListRecommended.ts";
 import { useVolumeFunctions } from "@/hooks/SongListRecommended/useVolumeFunctions";
 import {useMenuOpen} from "@/hooks/SongListRecommended/useMenuOpen.ts";
@@ -9,9 +9,10 @@ import ReactPlayer from 'react-player';
 import { VscUnmute, VscMute } from "react-icons/vsc";
 import { FaSpotify } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
-import { SiYoutubemusic } from "react-icons/si";
+import { SiYoutubemusic, SiApplemusic } from "react-icons/si";
 import { CiMenuKebab } from "react-icons/ci";
 import { FaPlay } from "react-icons/fa";
+import { motion } from "motion/react"
 import '@/index.css'
 
 type SongCardProps = {
@@ -50,6 +51,10 @@ export const SongCard = ({ item }: SongCardProps) => {
         } else {
             handleOpenMenu();
         }
+    };
+
+    const handleLinkClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
     };
 
 
@@ -98,7 +103,11 @@ export const SongCard = ({ item }: SongCardProps) => {
                         <span className={`absolute top-2 left-2 text-white loading loading-spinner loading-md
                             ${isHovered ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
                             </span>
-                        <div className={`absolute top-2 right-2 flex z-50 bg-gray-200/50 backdrop-blur-lg p-1 rounded-2xl`}>
+                        <motion.div
+                            initial={{ filter: "blur(10px)" }}
+                            animate={{ filter: "none" }}
+                            whileHover={{ scale: 1.1 }}
+                            className={`absolute box top-2 right-2 flex z-50  backdrop-blur-lg p-1 rounded-2xl`}>
                             <CiMenuKebab
                                 onClick={handleMenuToggle}
                                 className={`absolute top-2 right-2 bg-gray-200/50 text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50 ${isOpen ? 'hidden' : 'block'}`}
@@ -106,21 +115,21 @@ export const SongCard = ({ item }: SongCardProps) => {
                             <ul>
                                 <li className={`absolute top-1 right-2 flex z-99 bg-gray-200/50 backdrop-blur-lg p-1 rounded-2xl ${isOpen ? 'block' : 'hidden'}`}
                                 >
-                                    <a href=""><FaSpotify className="text-white text-3xl mr-1 hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50" /></a>
-                                    <a href=""><SiYoutubemusic className="text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50" /></a>
-                                    <a href=""></a>
+                                    <a href={item.spotifyLink} onClick={handleLinkClick} target="_blank" rel="noopener noreferrer"><FaSpotify className="text-white text-3xl mr-1 hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50" /></a>
+                                    <a href={item.youtubeLink} onClick={handleLinkClick} target="_blank" rel="noopener noreferrer"><SiYoutubemusic className="text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50" /></a>
+                                    <a href={item.appleMusicLink} onClick={handleLinkClick} target="_blank" rel="noopener noreferrer"><SiApplemusic className="text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50" /></a>
                                     <button>
                                         <IoIosClose
                                         onClick={handleMenuToggle}
-                                        className={`text-white text-3xl hover:bg-gray-100 hover:text-black duration-300 p-1 m-auto rounded-full z-50 cursor-pointer`}
+                                        className={`text-white text-3xl duration-500 hover:bg-gray-100 hover:text-black p-1 m-auto rounded-full z-50 cursor-pointer`}
                                         /></button>
                                 </li>
                             </ul>
-                        </div>
+                        </motion.div>
                     </>
                 )}
 
-                <span className={`absolute z-50 bottom-2 left-2 bg-gray-300/20 backdrop-blur-lg rounded-xl p-4 text-bold text-white text-md ${isHovered ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300}`}>
+                <span className={`absolute z-50 bottom-2 left-2 bg-gray-300/20 backdrop-blur-lg rounded-xl p-4 text-bold text-white text-md ${isHovered ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
                     {item.songTitle}
                 </span>
                 <span
