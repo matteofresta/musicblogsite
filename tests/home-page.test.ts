@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test';
 
 
 test ('Home page Navbar', async ({ page }) => {
-    await page.goto('http://localhost:5173/');
+    await page.goto('/');
     await page.waitForLoadState('networkidle');
 
     await expect(page).toHaveTitle('musicblogpage');
@@ -23,7 +23,7 @@ test ('Home page Navbar', async ({ page }) => {
 });
 
 test ('Home page Header', async ({ page }) => {
-    await page.goto('http://localhost:5173/');
+    await page.goto('/');
     await expect(page).toHaveTitle('musicblogpage');
 
 
@@ -40,7 +40,7 @@ test ('Home page Header', async ({ page }) => {
 })
 
 test ('Home page Main content', async ({ page }) => {
-    await page.goto('http://localhost:5173/');
+    await page.goto('/');
     await expect(page).toHaveTitle('musicblogpage');
 
     const caroulelArrowPrevious = page.locator('button[aria-label="Previous Slide"]');
