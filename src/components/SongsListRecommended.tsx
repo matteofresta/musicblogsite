@@ -1,3 +1,14 @@
+/*
+ * -----------------------------------------------------------------------------
+ *  File:         Footer.tsx
+ *  Description:  List of recommended songs for the application.
+ *
+ *  Author:       Matteo Fresta
+ *  Copyright:    Copyright (c) 2025 Matteo Fresta. All rights reserved.
+ * -----------------------------------------------------------------------------
+ */
+
+
 import {cardData} from "@/data/cardData.ts";
 import {SongCard} from "./SongCard.tsx";
 

@@ -1,3 +1,15 @@
+/*
+ * -----------------------------------------------------------------------------
+ *  File:         Footer.tsx
+ *  Description:  Defines the Song card component for the application.
+ *
+ *  Author:       Matteo Fresta
+ *  Copyright:    Copyright (c) 2025 Matteo Fresta. All rights reserved.
+ * -----------------------------------------------------------------------------
+ */
+
+
+
 import React from "react";
 import { Card } from "@/components/ui";
 import { useSongListRecommended } from "@/hooks/SongListRecommended/useSongListRecommended.ts";

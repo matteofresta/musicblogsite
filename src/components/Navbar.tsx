@@ -1,3 +1,14 @@
+/*
+ * -----------------------------------------------------------------------------
+ *  File:         Footer.tsx
+ *  Description:  Defines the Navbar component for the application.
+ *
+ *  Author:       Matteo Fresta
+ *  Copyright:    Copyright (c) 2025 Matteo Fresta. All rights reserved.
+ * -----------------------------------------------------------------------------
+ */
+
+
 import { Button } from "@/components/ui";
 import { Link } from "react-router-dom";
 

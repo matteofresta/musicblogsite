@@ -1,3 +1,14 @@
+/*
+ * -----------------------------------------------------------------------------
+ *  File:         Footer.tsx
+ *  Description:  Defines the Main Content component for the application.
+ *
+ *  Author:       Matteo Fresta
+ *  Copyright:    Copyright (c) 2025 Matteo Fresta. All rights reserved.
+ * -----------------------------------------------------------------------------
+ */
+
+
 import '@/components/ui/css/carouselEffect.css';
 import { CarouselComponent } from "@/components/CarouselComponent.tsx";
 import {SongsListRecommended} from "@/components/SongsListRecommended.tsx";
