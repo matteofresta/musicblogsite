@@ -1,9 +1,18 @@
-// components/Header.tsx
+/*
+ * -----------------------------------------------------------------------------
+ *  File:         Footer.tsx
+ *  Description:  Defines the Header component for the application.
+ *
+ *  Author:       Matteo Fresta
+ *  Copyright:    Copyright (c) 2025 Matteo Fresta. All rights reserved.
+ * -----------------------------------------------------------------------------
+ */
+
+
 import DarkVeil from '@/components/ui/DarkVeil';
 import { FaArrowDown } from "react-icons/fa";
 import '@/components/ui/css/DarkVeil.css';
 
-// Il numero di barre che vuoi visualizzare
 const NUMBER_OF_BARS = 7;
 
 export const Header = () => {
@@ -26,7 +35,6 @@ export const Header = () => {
                     Expand your Music Horizon and taste new songs!
                 </span>
 
-                {/* Equalizzatore a lato */}
                 <div className="equalizer-container-inline">
                     {Array.from({ length: NUMBER_OF_BARS }).map((_, index) => (
                         <div key={index} className="equalizer-bar-inline" />
@@ -34,7 +42,6 @@ export const Header = () => {
                 </div>
             </div>
 
-            {/* Freccia scroll in basso */}
             <button
                 onClick={scrollToContent}
                 className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 hover:text-white transition-all duration-300 animate-bounce"
