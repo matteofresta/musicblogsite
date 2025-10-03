@@ -20,7 +20,7 @@ export const Navbar = () => {
                 <Link to={"/"}>
                     <img
                         className="cursor-pointer h-10"
-                        src="/logo.png"
+                        src=""
                         alt="logo"
                         aria-label="Logo Page"
                     />
