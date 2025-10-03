@@ -17,8 +17,6 @@ jobs:
         run: npm install
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Installing Webkit
-        run: npx playwright install webkit
       - name: Run Playwright tests
         run: npx playwright test
       - uses: actions/upload-artifact@v4
