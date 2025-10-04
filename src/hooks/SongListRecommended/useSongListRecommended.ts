@@ -1,49 +1,55 @@
-import {useCallback, useState} from "react";
+import { useCallback, useState } from "react";
 
 type ProgressData = {
-    playedSeconds: number;
-    played: number;
-    loaded: number;
-    loadedSeconds: number;
+  playedSeconds: number;
+  played: number;
+  loaded: number;
+  loadedSeconds: number;
 };
 
 export const useSongListRecommended = () => {
-    const [isHovered, setIsHovered] = useState(false);
-    const [isPlayingSong, setIsPlayingSong] = useState(false);
-    const [songPlayTime, setSongPlayTime] = useState(0);
-    const [isMusiTitleVisible, setIsMusicTitleVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPlayingSong, setIsPlayingSong] = useState(false);
+  const [songPlayTime, setSongPlayTime] = useState(0);
+  const [isMusiTitleVisible, setIsMusicTitleVisible] = useState(false);
 
-    {/* Timeout to make the title visible after 400ms of hovering and starting the song */}
-    const handleMouseEnter = useCallback(() => {
-        setIsHovered(true);
-        setIsPlayingSong(true);
-        setSongPlayTime(0);
-        const makeTitleVisibleTimeout = setTimeout(() => {
-            setIsMusicTitleVisible(true);
-        }, 400);
-        return () => clearTimeout(makeTitleVisibleTimeout);
-    }, [setIsPlayingSong, setIsHovered]);
+  {
+    /* Timeout to make the title visible after 400ms of hovering and starting the song */
+  }
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+    setIsPlayingSong(true);
+    setSongPlayTime(0);
+    const makeTitleVisibleTimeout = setTimeout(() => {
+      setIsMusicTitleVisible(true);
+    }, 400);
+    return () => clearTimeout(makeTitleVisibleTimeout);
+  }, [setIsPlayingSong, setIsHovered]);
 
-    {/* Handle mouse leave so that is all gone */}
-    const handleMouseLeave = useCallback(() => {
-        setIsHovered(false);
-        setIsPlayingSong(false);
-        setSongPlayTime(0);
-        setIsMusicTitleVisible(false);
-    }, []);
+  {
+    /* Handle mouse leave so that is all gone */
+  }
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+    setIsPlayingSong(false);
+    setSongPlayTime(0);
+    setIsMusicTitleVisible(false);
+  }, []);
 
-    const handleProgress = useCallback((data: ProgressData) => {
-        setSongPlayTime(data.playedSeconds);
-    }, [setSongPlayTime]);
+  const handleProgress = useCallback(
+    (data: ProgressData) => {
+      setSongPlayTime(data.playedSeconds);
+    },
+    [setSongPlayTime],
+  );
 
-
-    return {
-        isMusiTitleVisible,
-        songPlayTime,
-        isPlayingSong,
-        isHovered,
-        handleProgress,
-        handleMouseEnter,
-        handleMouseLeave
-    };
-}
+  return {
+    isMusiTitleVisible,
+    songPlayTime,
+    isPlayingSong,
+    isHovered,
+    handleProgress,
+    handleMouseEnter,
+    handleMouseLeave,
+  };
+};

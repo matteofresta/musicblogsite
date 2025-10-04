@@ -8,5 +8,4 @@
  * -----------------------------------------------------------------------------
  */
 
-
-export * from '@/components/ui/shadcn/skeleton/LoginFormSkeleton.tsx'
+export * from "@/components/ui/shadcn/skeleton/LoginFormSkeleton.tsx";

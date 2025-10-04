@@ -8,19 +8,18 @@
  * -----------------------------------------------------------------------------
  */
 
-
 import { Navbar } from "@/components/Navbar.tsx";
-import {Header} from "@/components/Header.tsx";
-import {MainContent} from "@/components/MainContent.tsx";
-import {Footer} from "@/components/Footer/Footer.tsx";
+import { Header } from "@/components/Header.tsx";
+import { MainContent } from "@/components/MainContent.tsx";
+import { Footer } from "@/components/Footer/Footer.tsx";
 
 export const Home = () => {
   return (
     <div>
-        <Navbar />
-        <Header />
-        <MainContent />
-        <Footer />
+      <Navbar />
+      <Header />
+      <MainContent />
+      <Footer />
     </div>
-  )
+  );
 };
