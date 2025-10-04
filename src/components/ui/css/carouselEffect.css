@@ -1,66 +1,78 @@
 .carousel-container {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .carousel-fog-left {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120px;
-    height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7), transparent);
-    z-index: 30;
-    pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  z-index: 30;
+  pointer-events: none;
 }
 
 .carousel-fog-right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 120px;
-    height: 100%;
-    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7), transparent);
-    z-index: 30;
-    pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  z-index: 30;
+  pointer-events: none;
 }
 
 .carousel-slide {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    flex-shrink: 0;
-    cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
 .carousel-img {
-    width: 24rem;
-    height: 16rem;
-    object-fit: cover;
-    display: block;
-    transition: filter 0.4s ease, transform 0.4s ease;
+  width: 24rem;
+  height: 16rem;
+  object-fit: cover;
+  display: block;
+  transition:
+    filter 0.4s ease,
+    transform 0.4s ease;
 }
 
 .carousel-slide:hover .carousel-img {
-    filter: blur(4px) brightness(0.7);
-    transform: scale(1.05);
+  filter: blur(4px) brightness(0.7);
+  transform: scale(1.05);
 }
 
 .carousel-artist-name {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 12px 24px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 24px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 /* Mostra il nome solo al hover */
 .carousel-slide:hover .carousel-artist-name {
-    opacity: 1;
+  opacity: 1;
 }

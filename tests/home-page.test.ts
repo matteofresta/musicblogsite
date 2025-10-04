@@ -1,59 +1,79 @@
-import {test, expect} from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
+test("Home page Navbar", async ({ page }) => {
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
 
-test ('Home page Navbar', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
+  await expect(page).toHaveTitle("musicblogpage");
 
-    await expect(page).toHaveTitle('musicblogpage');
+  const logo = page.locator('img[aria-label="Logo Page"]');
+  await expect(logo).toBeVisible();
 
-    const logo = page.locator('img[aria-label="Logo Page"]');
-    await expect(logo).toBeVisible();
+  const navLinks = page.locator("li");
+  await expect(navLinks).toHaveCount(3);
+  await expect(navLinks.nth(0)).toHaveText("Home");
+  await expect(navLinks.nth(1)).toHaveText("Recommended Music");
+  await expect(navLinks.nth(2)).toHaveText("Tell us about your Music");
 
-    const navLinks = page.locator('li');
-    await expect(navLinks).toHaveCount(3);
-    await expect(navLinks.nth(0)).toHaveText('Home');
-    await expect(navLinks.nth(1)).toHaveText('Recommended Music');
-    await expect(navLinks.nth(2)).toHaveText('Tell us about your Music');
-
-    const loginButton = page.getByRole('button', { name: 'Login' });
-    const registerButton = page.getByRole('button', { name: 'Register' });
-    await expect(loginButton).toBeVisible();
-    await expect(registerButton).toBeVisible();
+  const loginButton = page.getByRole("button", { name: "Login" });
+  const registerButton = page.getByRole("button", { name: "Register" });
+  await expect(loginButton).toBeVisible();
+  await expect(registerButton).toBeVisible();
 });
 
-test ('Home page Header', async ({ page }) => {
-    await page.goto('/');
-    await expect(page).toHaveTitle('musicblogpage');
+test("Home page Header", async ({ page }) => {
+  await page.goto("/");
+  await expect(page).toHaveTitle("musicblogpage");
 
+  const headerTitle = page.getByRole("heading", {
+    name: "Welcome To the Music World",
+  });
+  await expect(headerTitle).toBeVisible();
 
-    const headerTitle = page.getByRole('heading', { name: 'Welcome To the Music World' });
-    await expect(headerTitle).toBeVisible();
+  await expect(
+    page.getByText("Expand your Music Horizon and taste new songs!\n"),
+  ).toBeVisible();
 
-    await expect(page.getByText("Expand your Music Horizon and taste new songs!\n")).toBeVisible()
+  const headerVisualisation = page.locator(".equalizer-container-inline");
+  await expect(headerVisualisation).toBeVisible();
 
-    const headerVisualisation = page.locator('.equalizer-container-inline')
-    await expect(headerVisualisation).toBeVisible();
+  const scrollArrow = page.locator('button[aria-label="Scroll to content"]');
+  await expect(scrollArrow).toBeVisible();
+});
 
-    const scrollArrow = page.locator('button[aria-label="Scroll to content"]');
-    await expect(scrollArrow).toBeVisible();
-})
+test("Home page Main content", async ({ page }) => {
+  await page.goto("/");
+  await expect(page).toHaveTitle("musicblogpage");
 
-test ('Home page Main content', async ({ page }) => {
-    await page.goto('/');
-    await expect(page).toHaveTitle('musicblogpage');
+  const caroulelArrowPrevious = page.locator(
+    'button[aria-label="Previous Slide"]',
+  );
+  await expect(caroulelArrowPrevious).toBeVisible();
 
-    const caroulelArrowPrevious = page.locator('button[aria-label="Previous Slide"]');
-    await expect(caroulelArrowPrevious).toBeVisible();
+  const caroulelArrowNext = page.locator('button[aria-label="Next Slide"]');
+  await expect(caroulelArrowNext).toBeVisible();
 
-    const caroulelArrowNext = page.locator('button[aria-label="Next Slide"]');
-    await expect(caroulelArrowNext).toBeVisible();
+  const carouselItems = page.locator(".carousel-slide img");
+  await expect(carouselItems).toHaveCount(9);
 
-    const carouselItems = page.locator('.carousel-slide img');
-    await expect(carouselItems).toHaveCount(9);
+  await caroulelArrowNext.click();
+  await page.waitForTimeout(600);
+  await caroulelArrowPrevious.click();
+  await page.waitForTimeout(600);
+});
 
-    await caroulelArrowNext.click();
-    await page.waitForTimeout(600);
-    await caroulelArrowPrevious.click();
-    await page.waitForTimeout(600);
-})
+test("hover card", async ({ page }) => {
+  await page.goto("/");
+  const artistCards = page.getByTestId("song-card");
+  await expect(artistCards).toHaveCount(3);
+
+  await artistCards.nth(0).hover();
+  await expect(artistCards.nth(0).getByText("On The Level")).toBeVisible();
+
+  await artistCards.nth(1).hover();
+  await expect(artistCards.nth(1).getByText("A Dialogue")).toBeVisible();
+
+  await artistCards.nth(2).hover();
+  await expect(artistCards.nth(2).getByText("A Dialogue")).toBeVisible();
+  await page.waitForTimeout(1000);
+});

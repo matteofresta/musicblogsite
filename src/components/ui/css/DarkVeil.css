@@ -86,7 +86,7 @@
   animation-delay: 0.4s;
 }
 .equalizer-bar:nth-child(6) {
-  animation-duration: 1.0s;
+  animation-duration: 1s;
   animation-delay: 0.1s;
 }
 .equalizer-bar:nth-child(7) {
@@ -107,7 +107,7 @@
   animation-delay: 0.4s;
 }
 .equalizer-bar-inline:nth-child(4) {
-  animation-duration: 1.0s;
+  animation-duration: 1s;
   animation-delay: 0.1s;
 }
 .equalizer-bar-inline:nth-child(5) {

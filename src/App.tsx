@@ -8,10 +8,9 @@
  * -----------------------------------------------------------------------------
  */
 
-
 import { Home } from "@/pages/Home.tsx";
 import { Routes, Route } from "react-router";
-import {LoginPage} from "@/pages/LoginPage.tsx";
+import { LoginPage } from "@/pages/LoginPage.tsx";
 
 export default function App() {
   return (

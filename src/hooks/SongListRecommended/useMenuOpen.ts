@@ -1,15 +1,14 @@
-import {useState} from "react";
-
+import { useState } from "react";
 
 export const useMenuOpen = () => {
-    const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-    const handleOpenMenu = () => {
-        setIsOpen(true)
-    }
+  const handleOpenMenu = () => {
+    setIsOpen(true);
+  };
 
-    const handleCloseMenu = () => {
-        setIsOpen(false)
-    }
-    return {isOpen, handleOpenMenu, handleCloseMenu}
-}
+  const handleCloseMenu = () => {
+    setIsOpen(false);
+  };
+  return { isOpen, handleOpenMenu, handleCloseMenu };
+};
