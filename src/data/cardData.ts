@@ -1,3 +1,14 @@
+/*
+ * -----------------------------------------------------------------------------
+ *  File:         Footer.tsx
+ *  Description:  Stylesheet - MusicBlogPage
+ *
+ *  Author:       Matteo Fresta
+ *  Copyright:    Copyright (c) 2025 Matteo Fresta. All rights reserved.
+ * -----------------------------------------------------------------------------
+ */
+
+
 export type cardItem = {
   src: string;
   alt: string;
